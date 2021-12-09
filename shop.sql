@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2021 at 08:40 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.1
+-- Generation Time: Dec 09, 2021 at 10:06 PM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 8.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -165,32 +165,27 @@ INSERT INTO `subcategory` (`id`, `categoryid`, `subcategory`, `creationDate`, `u
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) DEFAULT NULL,
+  `fname` varchar(255) DEFAULT NULL,
+  `lname` varchar(250) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `contactno` bigint(11) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  `shippingAddress` longtext DEFAULT NULL,
-  `shippingState` varchar(255) DEFAULT NULL,
-  `shippingCity` varchar(255) DEFAULT NULL,
-  `shippingPincode` int(11) DEFAULT NULL,
-  `billingAddress` longtext DEFAULT NULL,
-  `billingState` varchar(255) DEFAULT NULL,
-  `billingCity` varchar(255) DEFAULT NULL,
-  `billingPincode` int(11) DEFAULT NULL,
-  `regDate` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updationDate` varchar(255) DEFAULT NULL
+  `password` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `contactno`, `password`, `shippingAddress`, `shippingState`, `shippingCity`, `shippingPincode`, `billingAddress`, `billingState`, `billingCity`, `billingPincode`, `regDate`, `updationDate`) VALUES
-(1, 'Anuj Kumar', 'anuj.lpu1@gmail.com', 9009857868, 'f925916e2754e5e03f75dd58a5733251', 'CS New Delhi', 'New Delhi', 'Delhi', 110001, 'New Delhi', 'New Delhi', 'Delhi', 110092, '2017-02-04 19:30:50', ''),
-(2, 'Amit ', 'amit@gmail.com', 8285703355, '5c428d8875d2948607f3e3fe134d71b4', '', '', '', 0, '', '', '', 0, '2017-03-15 17:21:22', ''),
-(3, 'hg', 'hgfhgf@gmass.com', 1121312312, '827ccb0eea8a706c4c34a16891f84e7b', '', '', '', 0, '', '', '', 0, '2018-04-29 09:30:32', ''),
-(4, 'www', 'a@gmail.com', 3223423, 'c4ca4238a0b923820dcc509a6f75849b', 'dd', 'dd', 'dd', 0, 'efaf', 'asdf', 'sadf', 23, '2020-07-01 09:57:11', NULL),
-(5, 'test', 'test@gmail.com', 996986868, 'c4ca4238a0b923820dcc509a6f75849b', NULL, NULL, NULL, NULL, 'test', 'test', 'test', 123, '2020-07-01 10:30:11', NULL);
+INSERT INTO `users` (`id`, `fname`, `lname`, `email`, `password`) VALUES
+(1, 'Anuj Kumar', '', 'anuj.lpu1@gmail.com', 'f925916e2754e5e03f75dd58a5733251'),
+(2, 'Amit ', '', 'amit@gmail.com', '5c428d8875d2948607f3e3fe134d71b4'),
+(3, 'hg', '', 'hgfhgf@gmass.com', '827ccb0eea8a706c4c34a16891f84e7b'),
+(4, 'www', '', 'a@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b'),
+(5, 'test', '', 'test@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b'),
+(6, 'james', 'wawez', 'w@gmail.com', '1234'),
+(7, 'james', 'wawez', 'w@gmail.com', '1234'),
+(8, 'james', 'wawez', 'w@gmail.com', '1234'),
+(9, 'james', 'waweru', 'james@gmail.com', '1234'),
+(10, 'james', 'waweru', 'james@gmail.com', '1234');
 
 -- --------------------------------------------------------
 
@@ -284,7 +279,7 @@ ALTER TABLE `subcategory`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `wishlist`

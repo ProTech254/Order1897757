@@ -1,84 +1,89 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="styles.css">
 <title>Login by Constantin in PHP</title>
 </head>
 <body>
-<form method='post' action='login.php'>
-<table width ='600' border='8' align='center'>
-<tr>
-<td colspan='7'> <h1> Log in As Existing Customer  </h1> </td>
-</tr>
-<tr>
-<td> Email: <input type ='text' name='email'></td><br>
-</tr>
-<tr>
-<td>  Password: <input type ='password' name='pass'></td><br>
-</tr>
-<tr><td colspan ='5' align ='center'> <br><br /><input type ='submit'  name = 'submit' value='Login Now'/></td>
-</tr>
-</form>
-</table>
+
+
+<form action="login.php" method="post">
+  <div class="imgcontainer">
+    <p>Login as an existing customer</p>
+  </div>
+
+  <div class="container">
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="email" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="pass" required>
+
+    <button type="submit">Login</button>
+    
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn">Cancel</button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
+  </div>
+</form> 
 </body>
 </html>
 
 <?php
 
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
-define('DB_DATABASE', 'ecommerce');
+$servername = "localhost";
+ $dBusername = "root";
+ $password = "";
+ $dbname = "shop";
+ 
+ // Create connection
+ $conn = new mysqli($servername, $dBusername, $password, $dbname);
+ // Check connection
+ if ($conn->connect_error) {
+   die("Connection failed: " . $conn->connect_error);
+ }
 
-$db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
+//  Attempt user login
 
-
-// Check connection
-
-if (!$db) 
-{
-die("Connection failed:".mysqli_connect_error());
-}
-
-//echo "Connected successfully";
-
-error_reporting(E_ALL);
-ini_set('display_errors',1);
-
-if (isset($_POST['submit']))
-{
-	$a =$_POST['email'];
-	$b =$_POST['pass'];
+if(isset($_POST['email']) && isset($_POST['pass'])){
+	$email = $_POST['email'];  
+	$pass = $_POST['pass'];  
+	// $hashed_password = hash('md5', $password);
 	
-	if($a =='')
+	$sql_select_user = "SELECT * FROM users WHERE email ='".$email."' AND password ='".$pass."' limit 1";
+	$user_result = mysqli_query($conn, $sql_select_user);
+	$row = mysqli_fetch_array($user_result);
 
-	{
-		echo"<script> alert('please enter your email!')</script>";
-		exit();
+	if(mysqli_num_rows($user_result) == 1 ){
+		$_SESSION['user_id'] = $row['id'];
+		
+		$_SESSION['login_message'] = 'Successfully logged in!';
+		$_SESSION['login_msg_type'] = 'success';
+		echo "<br>";
+		echo  $_SESSION['login_msg_type'];
+		echo "<br>";
+		
+		
+		header('location: homepage.php');
+		
+	}else{
+		echo"<script> alert('User Not found!')</script>";
+		echo 'agent not found';
+		echo $hashed_password;
+		echo '<br>';
+		echo $password;
+		$_SESSION['login_message'] = 'Incorrect credentials';
+		$_SESSION['login_msg_type'] = 'danger';
+		echo  $_SESSION['login_message'];
+		header('location: login.php');
 	}
-
-	if($b =='')
-	{
-		echo"<script> alert('please enter your password!')</script>";
-		exit();
-	}
-	
-	$c= "select * from registration where email='$a' AND pass ='$b'";
-
-if($d=mysqli_query($db,$c))
-{
-$e=mysqli_num_rows($d);
-echo "Hello customers ";
-exit();
 }
 
-else 
 
-{
-echo "invalid Login details ";
-exit();
-}
 
-}
 
 ?>
 
