@@ -180,29 +180,28 @@ body {
     </div>
     <div class="card">
       <h2>Our famous Products</h2>
-
+      <div class="image2" style="height:350px;">
       <?php
-$ret=mysqli_query($con,"select * from products limit 1");
+$ret=mysqli_query($con,"select * from products  where id between 1 and 5");
 while ($row=mysqli_fetch_array($ret)) 
 {
 	# code...
 
 
-?>
-
-						    	
-
-			<div class="image2" style="height:350px;">
-				<a href="product-details.php?pid=<?php echo htmlentities($row['id']);?>">
-				<img  src="pictures/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>" data-echo="pictures/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>"  width="180" height="300" alt=""></a>
+?>					    	
+<div class="det" style="float:left;">
 			
+				<a href="product-details.php?pid=<?php echo htmlentities($row['id']);?>">
+				<img  src="pictures/<?php echo htmlentities($row['productImage1']);?>" data-echo="pictures/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>"  width="180" height="300" alt=""></a>
+			
+                <center>
                 <h3 class="name"><a href="product-details.php?pid=<?php echo htmlentities($row['id']);?>"><?php echo htmlentities($row['productName']);?></a></h3>
-
-            </div><!-- /.image -->			
-         
+                </center>
+           	
+                </div>
 	
 	<?php } ?>
-      
+    </div><!-- /.image -->		
    
       <p>Famous reviews from our customers</p>
       <p>" I like the service of this company " ... john</p>
@@ -211,20 +210,61 @@ while ($row=mysqli_fetch_array($ret))
   <div class="rightcolumn">
     <div class="card">
       <h2>About Us</h2>
-      <div class="fakeimg" style="height:100px;">Image</div>
+     
+
+      
+      <?php
+$ret=mysqli_query($con,"select * from products limit 1");
+while ($row=mysqli_fetch_array($ret)) 
+{
+	# code...
+?>
+
+
+<div class="fakeimg" style="padding:14px;">
+				<a href="product-details.php?pid=<?php echo htmlentities($row['id']);?>">
+				<img  src="pictures/<?php echo htmlentities($row['productImage1']);?>" data-echo="pictures/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>"  width="120" height="120" alt=""></a>
+		
+
+            </div><!-- /.image -->			
+	<?php } ?>
+
       <p>Our address is :   </p>
+      <p>412 - 01500 Calfornia, USA   </p>
+      <p> Call </p>
+      <p>+1-4589-7892   </p>
     </div>
     <div class="card">
       <h3>Popular Recent sold prodcuts</h3>
-      <div class="fakeimg"><p>Image</p></div>
-      <div class="fakeimg"><p>Image</p></div>
-      <div class="fakeimg"><p>Image</p></div>
+
+      <?php
+$ret=mysqli_query($con,"select * from products where id between 10 and 13");
+while ($row=mysqli_fetch_array($ret)) 
+{
+	# code...
+
+
+?>
+
+
+<div class="fakeimg" style="padding:14px;">
+				<a href="product-details.php?pid=<?php echo htmlentities($row['id']);?>">
+				<img  src="pictures/<?php echo htmlentities($row['productImage1']);?>" data-echo="pictures/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>"  width="120" height="120" alt=""></a>
+		
+
+            </div><!-- /.image -->			
+	<?php } ?>
+   
     </div>
     <div class="card">
       <h3>Follow Me</h3>
-      <p>logo facebook</p>
-      <p>logo twitter</p>
-       <p>logo instagram</p>
+     	
+      <img  src="assets/images/facebook-logo.png"  width="40" height="40" alt="" style="float:left;"> <p>Facebook</p> <br>
+
+      <img  src="assets/images/twitter-logo.png"  width="40" height="40" alt="" style="float:left"> <p>Twitter</p> <br>
+
+      <img  src="assets/images/instagram-logo.jpg"  width="40" height="40" alt="" style="float:left;"> <p>Instagram</p><br>
+
     </div>
   </div>
 </div>
