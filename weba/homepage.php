@@ -1,3 +1,5 @@
+
+
 <?php
 session_start();
 error_reporting(0);
@@ -154,11 +156,22 @@ body {
 
 <div class="topnav">
   <a href="product.php">Products</a>
-  <a href="login.php">Login</a>
-  <a href="Registration.php">Register</a>
+  <?php 
+    if(!isset($_SESSION['user_id'])){
+      echo "<a href='login.php'>Login</a>
+      <a href='Registration.php'>Register</a>";
+    }
+  ?>
+  
  <a href="ContactUs.php">Contact Us</a>
   <a href="Feedback.php">Feedback</a>
   <a href="">Get a quote</a>
+  <?php
+    if(isset($_SESSION['user_id'])){
+      echo "<a href='logout.php'>Logout</a>
+     ";
+    }
+  ?>
   <a href="registeradmin.php">Register Web Master</a>
   <a href="loginadmin.php">Login Web Master </a>
   <a href="#" style="float:right">chat</a>
