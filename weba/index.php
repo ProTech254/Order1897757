@@ -142,12 +142,13 @@ body {
 
 <!-- <link rel="stylesheet" href="assets/css/main.css"> -->
 <link rel="shortcut icon" href="assets/images/favicon.ico">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
 
 </head>
 <body>
 
 <div class="header">
-<img src = "pictures/logo.png" align = "left" >
+<img src = "pictures/logo.png" align = "left" height="80" width="150"  style="" >
 <h1>H2o Website</h1>
   <p>We are Europe no.1 water suppliers</p>
 </div>

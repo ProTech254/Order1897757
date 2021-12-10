@@ -58,7 +58,7 @@ if(isset($_POST['email']) && isset($_POST['pass'])){
 	$row = mysqli_fetch_array($user_result);
 
 	if(mysqli_num_rows($user_result) == 1 ){
-		$_SESSION['user_id'] = $row['id'];
+		$_SESSION['login'] = $row['id'];
 		
 		$_SESSION['login_message'] = 'Successfully logged in!';
 		$_SESSION['login_msg_type'] = 'success';

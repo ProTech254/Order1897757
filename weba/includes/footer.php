@@ -5,11 +5,11 @@
             	<div class="col-xs-12 col-sm-6 col-md-4">
             		 <!-- ============================================================= CONTACT INFO ============================================================= -->
 <div class="contact-info">
-    <div class="footer-logo">
-        <div class="logo">
+    <div class="footer-logo"  >
+        <div class="logo" >
             <a href="index.php">
                 
-<h3>Shopping Portal</h3>
+            <img src = "pictures/logo.png" align = "left" height="60" width="100"   >
             </a>
         </div><!-- /.logo -->
     

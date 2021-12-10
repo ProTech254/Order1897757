@@ -20,7 +20,8 @@
 <div class="logo">
 	<a href="index.php">
 		
-		<h2>Shopping Portal</h2>
+	<img src = "pictures/logo.png" align = "left" height="60" width="100"  style="" >
+		<!-- <h2>Shopping Portal</h2> -->
 
 	</a>
 </div>		
@@ -50,7 +51,7 @@ if(!empty($_SESSION['cart'])){
 				<div class="total-price-basket">
 					<span class="lbl">cart -</span>
 					<span class="total-price">
-						<span class="sign">Rs.</span>
+						<span class="sign">$</span>
 						<span class="value"><?php echo $_SESSION['tp']; ?></span>
 					</span>
 				</div>
@@ -87,13 +88,13 @@ if(!empty($_SESSION['cart'])){
 					<div class="row">
 						<div class="col-xs-4">
 							<div class="image">
-								<a href="product-details.php?pid=<?php echo $row['id'];?>"><img  src="admin/productimages/<?php echo $row['id'];?>/<?php echo $row['productImage1'];?>" width="35" height="50" alt=""></a>
+								<a href="product-details.php?pid=<?php echo $row['id'];?>"><img  src="pictures/<?php echo $row['productImage1'];?>" width="35" height="50" alt=""></a>
 							</div>
 						</div>
 						<div class="col-xs-7">
 							
 							<h3 class="name"><a href="product-details.php?pid=<?php echo $row['id'];?>"><?php echo $row['productName']; ?></a></h3>
-							<div class="price">Rs.<?php echo ($row['productPrice']+$row['shippingCharge']); ?>*<?php echo $_SESSION['cart'][$row['id']]['quantity']; ?></div>
+							<div class="price">$<?php echo ($row['productPrice']+$row['shippingCharge']); ?>*<?php echo $_SESSION['cart'][$row['id']]['quantity']; ?></div>
 						</div>
 						
 					</div>
@@ -106,7 +107,7 @@ if(!empty($_SESSION['cart'])){
 			<div class="clearfix cart-total">
 				<div class="pull-right">
 					
-						<span class="text">Total :</span><span class='price'>Rs.<?php echo $_SESSION['tp']="$totalprice". ".00"; ?></span>
+						<span class="text">Total :</span><span class='price'>$<?php echo $_SESSION['tp']="$totalprice". ".00"; ?></span>
 						
 				</div>
 			
@@ -126,7 +127,7 @@ if(!empty($_SESSION['cart'])){
 				<div class="total-price-basket">
 					<span class="lbl">cart -</span>
 					<span class="total-price">
-						<span class="sign">Rs.</span>
+						<span class="sign">$</span>
 						<span class="value">00.00</span>
 					</span>
 				</div>
